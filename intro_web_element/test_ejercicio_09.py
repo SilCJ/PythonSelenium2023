@@ -21,11 +21,10 @@ class TestLandingPage:
 
     def test_slow_loading_page(self):
         # Obtener el elemento, y el estado importa
-        button = self.__find_clickable_element(By.ID, "downloadButton")
+        button = self.__find_clickable_element(By.ID, "cricle-btn")
         button.click()
-        label = self.__find_by_text(By.CLASS_NAME, "progress-label", "Complete!")
+        label = self.__find_by_text(By.CLASS_NAME,  "percenttext", "100%")
 
-        label_dos = self.__find_visible_element(By.CLASS_NAME, "ui-dialog-titlebar-close")
 
     def __find_clickable_element(self, by: By, value: str):
         return self.wait_driver.until(EC.element_to_be_clickable((by, value)))
