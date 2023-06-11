@@ -47,5 +47,17 @@ class TestLandingPage:
         assert add_carrito.is_displayed() and add_carrito.is_enabled(), "El botón debe estar visible y habilitado"
         add_carrito.click()
 
+    def __find_clickable_element(self, by: By, value: str):
+        return self.wait_driver.until(EC.element_to_be_clickable((by, value)))
+
+    def __find_visible_element(self, by: By, value: str):
+        return self.wait_driver.until(EC.visibility_of_element_located((by, value)))
+
+    def __find_by_text(self, by: By, value: str, text: str):
+        return self.wait_driver.until(EC.text_to_be_present_in_element((by, value), text))
+
+    def __wait_until_disappears(self, by: By, value: str):
+         self.wait_driver.until(EC.invisibility_of_element((by, value)))
+
     def teardown_method(self):
             self.driver.quit()
